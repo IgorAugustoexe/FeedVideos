@@ -8,7 +8,6 @@ function App(): React.JSX.Element {
   //const videoRef = useRef<VideoRef>(null);
   const videoRef = useRef<any>({})
   const predecessorIndexVideo = useRef<number>(-1)
-  const highestIndex = useRef<number>(0)
 
   const [currentIndexVideo, setCurrentIndexVideo] = useState<number>(0)
 
@@ -20,7 +19,6 @@ function App(): React.JSX.Element {
       videoRef.current[predecessorIndexVideo.current].seek(0)
     }
     setCurrentIndexVideo(viewableItems.changed[0].index)
-    if (highestIndex.current <= viewableItems.changed[0].index) highestIndex.current = viewableItems.changed[0].index
     predecessorIndexVideo.current = viewableItems.changed[0].index
   }, [])
 
@@ -76,8 +74,6 @@ const styles = StyleSheet.create({
     right: 0,
     width: config.windowWidth,
     height: config.windowHeight,
-    borderWidth: 1,
-    borderColor: '#00f',
   },
 })
 
